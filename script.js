@@ -1,5 +1,6 @@
 let num1, num2, operator;
 const display = document.querySelector(".display");
+const numBtns = Array.from(document.querySelectorAll(".number"));
 
 function add(a, b) {
   return a + b;
@@ -22,17 +23,18 @@ function operate(num1, num2, operator) {
 }
 
 function updateNum1(e) {
-  num1 = +e.target.textContent;
+  num1 += e.target.textContent;
   display.textContent = num1;
 }
 function updateNum2(e) {
   num2 = +e.target.textContent;
   display.textContent = num2;
-  
+
 }
-// let numBtns = Array.from(document.querySelectorAll(".number"));
-//
-// for (btn of numBtns) {
-//   btn.addEventListener("click", (e) => {
-//   })
-// }
+
+
+for (btn of numBtns) {
+  btn.addEventListener("click", (e) => {
+    updateNum1(e)
+  })
+}
