@@ -45,7 +45,7 @@ for (btn of numBtns) {
   btn.addEventListener("click", (e) => {
     if (!operator) {
       updateNum1(e);
-    }else{
+    } else {
       updateNum2(e);
     }
   });
@@ -53,19 +53,28 @@ for (btn of numBtns) {
 
 for (btn of operatorBtns) {
   btn.addEventListener("click", (e) => {
-    updateOperator(e);
+    if (operator == "") {
+      updateOperator(e);
+    } else {
+      let result = operate(+num1, +num2, operator);
+      num1 = result;
+      num2 = "";
+      updateOperator(e);
+      display.textContent = result;
+    }
   });
 }
 
 equalsBtn.addEventListener("click", () => {
   let result = operate(+num1, +num2, operator);
-  display.textContent = result
-  
-})
+  display.textContent = result;
+  num1 = result;
+  num2 = "";
+});
 
 clearBtn.addEventListener("click", () => {
-  num1 = ""
-  num2 = ""
-  operator = ""
-  display.textContent = "CLEARED"
-})
+  num1 = "";
+  num2 = "";
+  operator = "";
+  display.textContent = "CLEARED";
+});
