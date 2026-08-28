@@ -60,16 +60,25 @@ for (btn of operatorBtns) {
       num1 = result;
       num2 = "";
       updateOperator(e);
-      display.textContent = result;
+      if (result % 1 != 0) {
+        display.textContent = result.toFixed(2);
+      } else {
+        display.textContent = result;
+      }
     }
   });
 }
 
 equalsBtn.addEventListener("click", () => {
   let result = operate(+num1, +num2, operator);
-  display.textContent = result;
   num1 = result;
   num2 = "";
+  operator = "";
+  if (result % 1 != 0) {
+    display.textContent = result.toFixed(2);
+  } else {
+    display.textContent = result;
+  }
 });
 
 clearBtn.addEventListener("click", () => {
